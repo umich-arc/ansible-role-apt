@@ -1,0 +1,7 @@
+{%- for param, values in item.value.iteritems() -%}
+{{ param }} { 
+{% for opt in values -%}
+"{{ opt }}"; 
+{% endfor %}
+};
+{% endfor %}

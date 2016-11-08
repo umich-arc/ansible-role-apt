@@ -1,0 +1,13 @@
+---
+- name: apt
+  hosts: all
+  connection: local
+  gather_facts: true
+  roles:
+    - apt
+  vars:
+    apt_transports:
+      - https
+      - s3
+      - spacewalk
+      - tor

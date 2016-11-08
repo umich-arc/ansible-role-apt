@@ -1,0 +1,9 @@
+---
+
+- name: TRANSPORT - Install apt-transport-https Package
+  apt: name='apt-transport-https={{ apt_transport_https_version }}*' state=present
+  when: (apt_transport_https_version is defined) and (apt_transport_https_version is not none)
+
+- name: TRANSPORT - Install Latest apt-transport-https Package
+  apt: name='apt-transport-https' state=latest
+  when: apt_transport_https_version is not defined

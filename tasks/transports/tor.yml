@@ -1,0 +1,9 @@
+---
+
+- name: TRANSPORT - Install apt-transport-tor Package
+  apt: name="apt-transport-tor={{ apt_transport_tor_version }}*" state=present
+  when: (apt_transport_tor_version is defined) and (apt_transport_tor_version is not none)
+
+- name: TRANSPORT - Install Latest apt-transport-tor Package
+  apt: name='apt-transport-tor' state=latest
+  when: apt_transport_tor_version is not defined

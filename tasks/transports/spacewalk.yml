@@ -1,0 +1,9 @@
+---
+
+- name: TRANSPORT - Install apt-transport-spacewalk Package
+  apt: name='apt-transport-spacewalk={{ apt_transport_spacewalk_version }}*' state=present
+  when: (apt_transport_spacewalk_version is defined) and (apt_transport_spacewalk_version is not none)
+
+- name: TRANSPORT - Install Latest apt-transport-spacewalk Package
+  apt: name='apt-transport-spacewalk' state=latest
+  when: apt_transport_spacewalk_version is not defined

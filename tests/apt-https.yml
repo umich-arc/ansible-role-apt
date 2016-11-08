@@ -1,0 +1,22 @@
+---
+- name: apt
+  hosts: all
+  connection: local
+  gather_facts: true
+  roles:
+    - apt
+  vars:
+    apt_transport_https_version: '1'
+    apt_config:
+      50unattended-upgrades:
+        "Unattended-Upgrade::Allowed-Origins":
+          - "${distro_id}:${distro_codename}-security"
+        "Unattended-Upgrade::Remove-Unused-Dependencies":
+          - true
+      99timeout:
+        "Acquire::ftp::Timeout":
+          - 10
+        "Acquire::http::Timeout":
+          - 10
+        "Acquire::https::Timeout":
+          - 10

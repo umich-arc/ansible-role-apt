@@ -1,0 +1,12 @@
+---
+
+- name: MAIN - Install Transports
+  tags: apt apt:transports
+  include: "transports/{{ item }}.yml"
+  items: "{{ apt_transports|default([]) }}"
+  when: apt_manage_transports|bool == true
+
+- name: MAIN - Configure Apt
+  tags: apt apt:config
+  include: config.yml
+  when: (apt_manage_config|bool == true)

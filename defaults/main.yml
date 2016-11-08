@@ -1,0 +1,14 @@
+---
+
+apt_manage_transports: true
+apt_manage_config: true
+apt_transports:
+  - https
+
+# apt_transport_https_version
+# apt_tranposrt_s3_version
+# apt_transport_spacewalk_version
+
+# apt_config:
+#  filename:
+#    paramname: [ values ]
