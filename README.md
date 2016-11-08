@@ -179,7 +179,7 @@ Please see the [CONTRIBUTING.md](CONTRIBUTING.md) document in the repo for infor
 License
 ----------
 
-BSD
+MIT
 
 
 
