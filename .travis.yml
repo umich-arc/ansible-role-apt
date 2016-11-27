@@ -25,4 +25,4 @@ script:
   - bundle exec rake integration:cloud
 
 after_script:
-  - bundle exec rake integration:cloud:sgroup-destrpy
+  - bundle exec rake integration:cloud:sgroup-destroy
