@@ -2,6 +2,8 @@
 
 Manages the configuration of Apt in addition to the various available apt-transports.
 
+[![Build Status](https://travis-ci.org/arc-ts/ansible-role-apt.svg?branch=master)](https://travis-ci.org/arc-ts/ansible-role-apt)
+
 Index
 ----------
 * [Requirements](#requirements)

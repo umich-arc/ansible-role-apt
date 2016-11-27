@@ -5,16 +5,22 @@ driver:
   aws_ssh_key_id: <%= ENV['AWS_SSH_KEY_ID'] %>
   security_group_ids: [ "<%= ENV['AWS_SGROUP_ID'] %>" ]
   region: <%= ENV['AWS_REGION'] %>
-  availability_zone: <% ENV['AWS_AVAILABILITY_ZONE'] %>
+  availability_zone: <%= ENV['AWS_AVAILABILITY_ZONE'] %>
   instance_type: <%= ENV['AWS_INSTANCE_TYPE'] || 't2.micro' %>
   associate_public_ip: true
   require_chef_omnibus: false
   tags:
     'ansible-role': ansible-role-apt
+<% if ENV['AWS_SUBNET'] %>
+  subnet_id: <%= ENV['AWS_SUBNET'] %>
+<% end %>
+<% if ENV['AWS_IAM_PROFILE'] %>
+  iam_profile_name: <%= ENV['AWS_IAM_PROFILE'] %>
+<% end %>
 
 transport:
   ssh_key: <%= ENV['KITCHEN_SSH_KEY'] %>
-  connection_timeout: 60
+  connection_timeout: 120
   connection_retries: 10
   max_ssh_sessions: 4
 
