@@ -2,8 +2,16 @@
 
 - name: TRANSPORT - Install apt-transport-tor Package
   apt: name="apt-transport-tor={{ apt_transport_tor_version }}*" state=present
+  register: _external_dependency_success
+  until: _external_dependency_success|success
+  retries: '{{ external_dependency_retries }}'
+  delay: '{{ external_dependency_delay }}'
   when: (apt_transport_tor_version is defined) and (apt_transport_tor_version is not none)
 
 - name: TRANSPORT - Install Latest apt-transport-tor Package
   apt: name='apt-transport-tor' state=latest
+  register: _external_dependency_success
+  until: _external_dependency_success|success
+  retries: '{{ external_dependency_retries }}'
+  delay: '{{ external_dependency_delay }}'
   when: apt_transport_tor_version is not defined

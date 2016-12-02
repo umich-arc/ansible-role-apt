@@ -2,8 +2,16 @@
 
 - name: TRANSPORT - Install apt-transport-s3
   apt: name='apt-transport-s3={{ apt_transport_s3_version }}*' state=present
+  register: _external_dependency_success
+  until: _external_dependency_success|success
+  retries: '{{ external_dependency_retries }}'
+  delay: '{{ external_dependency_delay }}'
   when: (apt_transport_s3_version is defined) and (apt_transport_s3_version is not none)
 
 - name: TRANSPORT - Install Latest apt-transport-s3 Package
   apt: name='apt-transport-s3' state=latest
+  register: _external_dependency_success
+  until: _external_dependency_success|success
+  retries: '{{ external_dependency_retries }}'
+  delay: '{{ external_dependency_delay }}'
   when: apt_transport_s3_version is not defined

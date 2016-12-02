@@ -125,6 +125,8 @@ Role Variables
 
 |           Variable Name           |   Default   |                                                   Description                                                   |
 |:---------------------------------:|:-----------:|:---------------------------------------------------------------------------------------------------------------:|
+|    `external_dependency_delay`    |     `20`    |                The time in seconds between external dependency retries. (repos, keyservers, etc)                |
+|   `external_dependnecy_retries`   |     `6`     |                        The number of retries to attempt accessing an external dependency.                       |
 |      `apt_manage_transports`      |    `true`   |                              Enables or Disables the management of apt transports.                              |
 |        `apt_manage_config`        |    `true`   |                              Enables or Disables the management of the apt config.                              |
 |            `apt_config`           |             | A hash containing the apt config. See the [apt-configuration](#apt-configuration) section for more information. |

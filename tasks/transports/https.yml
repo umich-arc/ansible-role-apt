@@ -2,8 +2,16 @@
 
 - name: TRANSPORT - Install apt-transport-https Package
   apt: name='apt-transport-https={{ apt_transport_https_version }}*' state=present
+  register: _external_dependency_success
+  until: _external_dependency_success|success
+  retries: '{{ external_dependency_retries }}'
+  delay: '{{ external_dependency_delay }}'
   when: (apt_transport_https_version is defined) and (apt_transport_https_version is not none)
 
 - name: TRANSPORT - Install Latest apt-transport-https Package
   apt: name='apt-transport-https' state=latest
+  register: _external_dependency_success
+  until: _external_dependency_success|success
+  retries: '{{ external_dependency_retries }}'
+  delay: '{{ external_dependency_delay }}'
   when: apt_transport_https_version is not defined
