@@ -1,0 +1,8 @@
+- name: ADDITIONAL SOURCES - Generate source list
+  template:
+    src: templates/list.j2
+    dest: "/etc/apt/sources.list.d/{{ item.name }}.list"
+    owner: root
+    group: root
+    mode: '0644'
+  with_items: '{{ apt_additional_sources|default([]) }}'

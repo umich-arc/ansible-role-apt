@@ -1,5 +1,26 @@
 ---
 
+- name: MAIN - Add Keys
+  tags: apt apt:keys
+  include: keys.yml
+  when: apt_manage_keys|bool == true
+
+# additional checks are added to ensure no accidental nuking of the
+# apt sources
+- name: MAIN - Manage Main Source List
+  tags: apt apt:sources
+  include: source_list.yml
+  when: (apt_manage_source_list|bool == true) and
+        (apt_source_list is defined) and
+        (apt_source_list != [])
+
+- name: MAIN - Manage Additional Sources
+  tags: apt apt:sources
+  include: additional_sources.yml
+  when: (apt_manage_additional_sources|bool == true) and
+        (apt_additional_sources is defined) and
+        (apt_additional_sources != [])
+
 - name: MAIN - Install Transports
   tags: apt apt:transports
   include: "transports/{{ item }}.yml"

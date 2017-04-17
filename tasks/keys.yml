@@ -1,0 +1,15 @@
+- name: KEYS - Add or Remove Keys
+  apt_key:
+    data:  '{{ item.data|default(omit) }}'
+    file: '{{ item.file|default(omit) }}'
+    id: '{{ item.id|default(omit) }}'
+    keyring: '{{ item.keyring|default(omit) }}'
+    keyserver: '{{ item.keyserver|default(omit) }}'
+    state: '{{ item.state|default(omit) }}'
+    url: '{{ item.url|default(omit) }}'
+    validate_certs: '{{ item.validate_certs|default(omit) }}'
+  register: _external_dependency_success
+  until: _external_dependency_success|success
+  retries: '{{ external_dependency_retries }}'
+  delay: '{{ external_dependency_delay }}'
+  with_items: '{{ apt_keys|default([]) }}'
