@@ -11,8 +11,8 @@
   tags: apt apt:sources
   include: sources_list.yml
   when: (apt_manage_sources_list|bool == true) and
-        (apt_source_list is defined) and
-        (apt_source_list != [])
+        (apt_sources_list is defined) and
+        (apt_sources_list != [])
 
 - name: MAIN - Manage Additional Sources
   tags: apt apt:sources
