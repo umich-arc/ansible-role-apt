@@ -9,8 +9,8 @@
 # apt sources
 - name: MAIN - Manage Main Source List
   tags: apt apt:sources
-  include: source_list.yml
-  when: (apt_manage_source_list|bool == true) and
+  include: sources_list.yml
+  when: (apt_manage_sources_list|bool == true) and
         (apt_source_list is defined) and
         (apt_source_list != [])
 

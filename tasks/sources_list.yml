@@ -6,4 +6,4 @@
     group: root
     mode: '0644'
   with_items:
-    - { name: 'list', entries: '{{ apt_source_list|default([]) }}' }
+    - { name: 'list', entries: '{{ apt_sources_list|default([]) }}' }
