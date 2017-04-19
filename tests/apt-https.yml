@@ -6,6 +6,8 @@
   roles:
     - apt
   vars:
+    apt_transports:
+      - https
     apt_transport_https_version: '1'
     apt_config:
       50unattended-upgrades:

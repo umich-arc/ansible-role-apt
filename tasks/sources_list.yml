@@ -1,0 +1,9 @@
+- name: SOURCE LIST - Generate main source list
+  template:
+    src: templates/list.j2
+    dest: '/etc/apt/sources.list'
+    owner: root
+    group: root
+    mode: '0644'
+  with_items:
+    - { name: 'list', entries: '{{ apt_sources_list|default([]) }}' }

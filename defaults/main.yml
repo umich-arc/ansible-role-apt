@@ -2,6 +2,9 @@
 
 external_dependency_delay: 20
 external_dependency_retries: 6
+apt_manage_keys: true
+apt_manage_sources_list: true
+apt_manage_additional_sources: true
 apt_manage_transports: true
 apt_manage_config: true
 apt_transports:

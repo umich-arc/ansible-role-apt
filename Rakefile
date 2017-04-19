@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
 # frozen_string_literal: true
+# rubocop:disable Metrics/BlockLength
 
 require 'aws-sdk'
 require 'rake'
@@ -73,6 +74,21 @@ namespace :integration do
       task_runner(config, 'apt-tor', 'test', concurrency)
     end
 
+    desc 'Execute sources-jessie test suite'
+    task :'sources-jessie' do
+      task_runner(config, 'sources-jessie', 'test', concurrency)
+    end
+
+    desc 'Execute sources-trusty test suite'
+    task :'sources-trusty' do
+      task_runner(config, 'sources-trusty', 'test', concurrency)
+    end
+
+    desc 'Execute sources-xenial test suite'
+    task :'sources-xenial' do
+      task_runner(config, 'sources-xenial', 'test', concurrency)
+    end
+
     desc 'Destroy all Instances'
     task :destroy do
       task_runner(config, '.*', 'destroy', concurrency)
@@ -117,6 +133,21 @@ namespace :integration do
       desc 'Execute apt-tor test suite'
       task :'apt-tor' do
         task_runner(config, 'apt-tor', 'test', concurrency)
+      end
+
+      desc 'Execute sources-jessie test suite'
+      task :'sources-jessie' do
+        task_runner(config, 'sources-jessie', 'test', concurrency)
+      end
+
+      desc 'Execute sources-trusty test suite'
+      task :'sources-trusty' do
+        task_runner(config, 'sources-trusty', 'test', concurrency)
+      end
+
+      desc 'Execute sources-xenial test suite'
+      task :'sources-xenial' do
+        task_runner(config, 'sources-xenial', 'test', concurrency)
       end
 
       desc 'Destroy all Instances'
