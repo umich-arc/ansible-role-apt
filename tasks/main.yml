@@ -24,7 +24,7 @@
 - name: MAIN - Install Transports
   tags: apt apt:transports
   include: "transports/{{ item }}.yml"
-  items: "{{ apt_transports|default([]) }}"
+  with_items: "{{ apt_transports|default([]) }}"
   when: apt_manage_transports|bool == true
 
 - name: MAIN - Configure Apt
